@@ -8,8 +8,9 @@ const app = express();
 // 1. CONFIGURE CORS
 // Replace the frontend URL with your actual Vercel URL once deployed
 const allowedOrigins = [
-  'http://localhost:5173', 
-  'https://golf-website-frontend.vercel.app' 
+  'https://golf-website-frontend.vercel.app',
+  'http://localhost:5173'
+   
 ];
 
 app.use(cors({
