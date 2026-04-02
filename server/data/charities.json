@@ -1,0 +1,66 @@
+[
+  {
+    "id": "community-aid-network",
+    "name": "Community Aid Network",
+    "category": "Community",
+    "description": "Delivering essential support services to communities affected by poverty and disaster.",
+    "website_url": "https://communityaidnetwork.org",
+    "is_active": true
+  },
+  {
+    "id": "education-first",
+    "name": "Education First",
+    "category": "Education",
+    "description": "Providing quality education and learning resources to children in developing nations.",
+    "website_url": "https://educationfirst.org",
+    "is_active": true
+  },
+  {
+    "id": "green-future-foundation",
+    "name": "Green Future Foundation",
+    "category": "Environment",
+    "description": "Planting trees and developing sustainable environmental solutions.",
+    "website_url": "https://greenfuturefoundation.org",
+    "is_active": true
+  },
+  {
+    "id": "health-foundation",
+    "name": "Health Foundation",
+    "category": "Health",
+    "description": "Supporting medical research and healthcare access for underserved communities around the world.",
+    "website_url": "https://healthfoundation.org",
+    "is_active": true
+  },
+  {
+    "id": "mental-health-alliance",
+    "name": "Mental Health Alliance",
+    "category": "Health",
+    "description": "Promoting mental wellness and providing free counseling services.",
+    "website_url": "https://mentalhealthalliance.org",
+    "is_active": true
+  },
+  {
+    "id": "ocean-conservation-alliance",
+    "name": "Ocean Conservation Alliance",
+    "category": "Environment",
+    "description": "Protecting marine ecosystems and fighting ocean pollution through global action.",
+    "website_url": "https://oceanconservationalliance.org",
+    "is_active": true
+  },
+  {
+    "id": "wildlife-trust",
+    "name": "Wildlife Trust",
+    "category": "Environment",
+    "description": "Preserving endangered species and their habitats through conservation programs.",
+    "website_url": "https://wildlifetrust.org",
+    "is_active": true
+  },
+  {
+    "id": "youth-sports-initiative",
+    "name": "Youth Sports Initiative",
+    "category": "Sports",
+    "description": "Giving underprivileged youth access to sports programs and equipment.",
+    "website_url": "https://youthsportsinitiative.org",
+    "is_active": true
+  }
+]
