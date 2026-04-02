@@ -1,32 +1,38 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import { apiGet } from "../utils/api";
 
 export const AuthContext = createContext();
 
-function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const checkAuth = useCallback(async () => {
     const token = localStorage.getItem('token');
     if (!token) {
       setLoading(false);
       return;
     }
 
-    apiGet('/auth/me')
-      .then((data) => {
-        if (data.user) {
-          setUser(data.user);
-        } else {
-          localStorage.removeItem('token');
-        }
-      })
-      .catch(() => {
+    try {
+      const data = await apiGet('/auth/me');
+      if (data && data.user) {
+        setUser(data.user);
+      } else {
         localStorage.removeItem('token');
-      })
-      .finally(() => setLoading(false));
+      }
+    } catch (error) {
+      console.error("Auth check failed:", error);
+      localStorage.removeItem('token');
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   const login = (token, userData) => {
     localStorage.setItem('token', token);
@@ -44,5 +50,4 @@ function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
 export default AuthProvider;

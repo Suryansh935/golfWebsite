@@ -13,8 +13,16 @@ import HowItWorks from "./pages/HowItWorks";
 import Charities from "./pages/Charities";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const { loading } = useContext(AuthContext);
+
+  // Prevent "Flash of Login Page" on reload
+  if (loading) {
+    return null; // Or a global full-screen loader
+  }
   return (
     <BrowserRouter>
       <Routes>
