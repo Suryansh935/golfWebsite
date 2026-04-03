@@ -42,16 +42,16 @@ app.use(express.json({
 const connectDB = async () => {
   try {
     if (!process.env.MONGODB_URL) {
-      console.error("❌ MONGODB_URL is missing");
+      console.error("MONGODB_URL is missing");
       return;
     }
 
-    console.log("🔄 Connecting to MongoDB...");
+    console.log("Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGODB_URL);
 
-    console.log("✅ MongoDB Connected Successfully");
+    console.log("MongoDB Connected Successfully");
   } catch (err) {
-    console.error("❌ MongoDB Connection Error:", err.message);
+    console.error("MongoDB Connection Error:", err.message);
   }
 };
 

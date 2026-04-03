@@ -6,6 +6,7 @@ import { apiGet } from "../utils/api";
 
 const Explore = () => {
   const [results, setResults] = useState([]);
+  const [stats, setStats] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ const Explore = () => {
       const data = await apiGet('/results');
       if (data.results) {
         setResults(data.results);
+        setStats(data.stats);
       }
       setLoading(false);
     };
@@ -49,11 +51,11 @@ const Explore = () => {
             </div>
           </section>
 
-          <section className="grid gap-6 md:grid-cols-3">
-            <StatCard title="Total draws" value={results.length || "0"} />
-            <StatCard title="Active members" value="5,000+" />
-            <StatCard title="Charities supported" value="120+" />
-          </section>
+         <section className="grid gap-6 md:grid-cols-3">
+          <StatCard title="Total draws" value={stats.totalDraws || 0} />
+          <StatCard title="Active members" value={stats.activeMembers || 0} />
+          <StatCard title="Charities supported" value={stats.charitiesSupported || 0} />
+        </section>
 
           <section className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl shadow-black/20">
             <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

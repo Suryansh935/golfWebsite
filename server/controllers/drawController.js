@@ -37,8 +37,28 @@ exports.runDraw = async (req, res) => {
 
 exports.getDrawResults = async (req, res) => {
   try {
-    const results = await DrawResult.find().sort({ createdAt: -1 }).limit(10);
-    res.json({ results });
+    // latest 10 results (for UI list)
+    const results = await DrawResult.find()
+      .sort({ createdAt: -1 })
+      .limit(10);
+
+    // 🔥 stats calculation
+    const totalDraws = await DrawResult.countDocuments();
+
+    const activeMembers = await User.countDocuments();
+
+    const charities = await User.distinct("charity.name");
+    const charitiesSupported = charities.filter(c => c).length;
+
+    res.json({
+      results,
+      stats: {
+        totalDraws,
+        activeMembers,
+        charitiesSupported
+      }
+    });
+
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
